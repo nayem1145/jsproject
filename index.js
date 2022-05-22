@@ -1,15 +1,18 @@
-var colors = ["red", "green", "blue", "orange", "pink"]; 
-var btn = document.getElementById("btn"); 
-btn.addEventListener("click", function(){
+//Theme Switch Functionality
 
-    var randomNumber = getRandomNumber(); 
-    document.body.style.backgroundColor = colors[randomNumber]; 
+var getVal = localStorage.getItem("theme"); 
 
-    console.log(randomNumber); 
-}); 
+if(getVal) {
+    document.body.classList.add(getVal);
+} 
 
-
-function getRandomNumber(){
-    Math.random(); 
-}
-
+btnSwitch = document.getElementById("demo"); 
+btnSwitch.addEventListener("click", function(){
+    var element = document.body; 
+    element.classList.toggle("dark-bg");
+    if(element.classList.contains("dark-bg")) {
+        localStorage.setItem("theme", "dark-bg");
+    } else {
+        localStorage.setItem("theme", "");
+    }
+})
